@@ -1,0 +1,329 @@
+/* Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The search field */
+#myInput {
+    border-box: box-sizing;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {outline: 3px solid #ddd;}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    display: inline-block;
+    float: 0;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+body
+{
+    background-color:#d1ccc6;
+}
+
+.home-left
+{
+   margin-left: 5%;
+}
+
+.home-right
+{
+    background-color: white;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-left: 2em;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.home-right h2 
+{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.form-label
+{
+    width: 5em;
+    margin-right: 1em;
+}
+
+
+#login-panel
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+    width: 30%;
+}
+
+#signup-panel
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+    width: 50%;
+}
+
+#menu-panel
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+    width: 50%;
+}
+
+#join-panel
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+    width: 50%;
+}
+
+.submit-button
+{
+    width: 25%;
+}
+
+.logo
+{
+    width: 75%;
+}
+
+.profile-epit-logo {
+    float:0;
+    width: 23%;
+    padding-left: 26px;
+}
+
+/* PROFILE container */
+.profile {
+    margin: 20px 0;
+}
+
+/* Profile Sidebar */
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: white;
+}
+
+/* Profile User Pic */
+.profile-userpic img {
+    /*float: none;
+    margin: 0 auto;
+    margin-left: 25%;
+    margin-right: auto;*/
+    margin-left: 6em;
+    margin-bottom: 2em;
+    width: 50%;
+    /*height: 75%;*/
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.btn.btn-default.profile-button {
+    margin-left: 6.5em;
+}
+
+.profile-submit-button {
+    margin-top: 2em;
+    margin-left: 9em;
+    margin-bottom: 2em;
+}
+
+.profile-pic-list {
+    list-style-type: none;
+    margin-right: 3em;
+    margin-top: 1em;
+}
+
+.row.profile{
+
+}
+.quote {
+    margin-top: 2.1em;
+    margin-bottom: 2em;
+    text-transform: capitalize;
+    font-size: 21px;
+}
+
+.profile-usertitle{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usertitle-bio {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+    margin-right: 0px;
+}
+
+/* Profile Content */
+.profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+}
+
+<<<<<<< HEAD
+/* stream php */
+.main-stream {
+    background: #fff;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+    min-height: 600px;
+}
+
+.stream-main-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;   
+}
+
+.middle-posts{
+    width: 70%;
+    background: #c4c8ce;
+    margin-left: 3%;
+    margin-top: 3%;
+    min-height: 50px;
+    float: left;
+}
+
+.right-profile-pic {
+    width: 40%;
+    background: transparent;
+    margin-right: 3%;
+    margin-top:0%;
+    float: right;
+}
+
+.right-profile-name {
+    float: right;
+    margin-right: 1%;
+}
+
+.right-side{
+    float: right;
+    margin-right:5%;
+}
+
+.followers-main {
+    background: #fff;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+    min-height: 600px;
+}
+
+.followers-icon{
+    float: 0;
+    width: 45%;
+}
+
+.follow-right {
+    float: right;
+    margin-right: 0%;
+    margin-top: 3%;
+}
+
+.followers-name {
+    margin-left: 18%;
+}
+
+.search-group {
+    float:right;
+    padding-right:15%;
+    display: inline-block;
+}
+
+.form-control {
+    margin-right: 5%;
+}
+
+=======
+.profile-content h1 {
+    text-align: center;
+}
+
+.goal-buttons {
+    text-align: center;
+}
+>>>>>>> origin/derrick

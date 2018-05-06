@@ -1,0 +1,29 @@
+{% include 'templates/header.html' %}
+{% include 'templates/navbar.html' with nav %}
+<body>
+    <div class="stream-main-logo">
+        <img src="/Epitaphis/resources/images/epitaph-01.svg" >
+    </div>
+    <div class="main-stream">
+        {% for row in rows %}
+            <div class="left-side">
+            </div>
+            <div class="middle-posts">
+                {{ row['goal'] }}
+            </div>
+            <div class="right-side">
+                <div class="right-profile-pic">
+                    <img src="/Epitaphis/resources/images/profile_photos/{{ row['path'] }}" style="width:100%;" >
+                    <figcaption>{{ row['firstName'] ~ " " ~ row['lastName'] ~ "   " ~ row['timestamp'] }}</figcaption>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+	<!-- ><div class-"right-profile-ghost">
+	    <img src="/Epitaphis/resources/images/ghost.png" width="12%"  >
+	</div> <-->
+    </div>
+
+
+</body>
+</html>

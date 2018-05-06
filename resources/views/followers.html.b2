@@ -1,0 +1,30 @@
+{% include 'templates/header.html' %}
+{% include 'templates/navbar.html' with nav %}
+<body>
+
+    <div class="followers-main">
+	<div class="follow-left">
+            <div class="tabs">
+		tab1 tab2 tab3
+		<div class="follower-panel" class="container">
+		    <div id="Followers" class="tabcontent">
+			Followers
+		    </div>
+		    <div id="Following" class="tabcontent">
+			Following
+		    </div>
+		    <div id="Requests"class="tabcontent">
+			Requests
+	   	    </div>
+		</div>
+	    </div>
+	</div>
+	<div class="follow-right">
+	    <div class="pic-right">
+		<img class="followers-icon" src="/Epitaphis/resources/images/profile_photos/green_ghostie.png">
+	    </div>
+	    <div class="followers-name"> NAME </div>
+	</div>
+    </div>
+</body>
+</html>

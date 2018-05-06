@@ -1,0 +1,200 @@
+{% include 'templates/header.html' %}
+{% include 'templates/navbar.html' with nav %}
+<body>
+    <div id="follower-panel" class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Followers</div>
+                <div class="panel-body">
+                    <script>
+                        function openTab(e, tabName)
+                        {
+                            var i, tabconent, tablinks;
+                            
+                            // Get all elements with class="tabcontent" and hide them
+                            tabcontent = document.getElementsByClassName("tabcontent");
+                            for (i = 0; i < tabcontent.length; i++)
+                            {
+                                tabcontent[i].style.display = "none";
+                            }
+                            
+                            // Get all elements with class="tablinks" and remove the class "active"
+                            tablinks = document.getElementsByClassName("tablinks");
+                            for (i = 0; i < tablinks.length; i++) {
+                                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                            }
+                            
+                            // Show the current tab, and add an "active" class to the button that opened the tab
+                            document.getElementById(tabName).style.display = "block";
+                            e.currentTarget.className += " active";
+                        }
+                    </script>
+                    <div class="tab">
+                        <button class="tablinks" onclick="openTab(event, 'Following')">Following</button>
+                        <button class="tablinks" onclick="openTab(event, 'Followers')">Followers</button>
+                        <button class="tablinks" onclick="openTab(event, 'Requests')">Requests</button>
+                    </div>
+                    <script>
+                        /* When the user clicks on the button,
+                         toggle between hiding and showing the dropdown content */
+                    function myFunction() {
+                        document.getElementById("myDropdown").classList.toggle("show");
+                    }
+                    
+                    function filterFunction() {
+                        var input, filter, ul, li, a, i;
+                        input = document.getElementById("myInput");
+                        filter = input.value.toUpperCase();
+                        div = document.getElementById("myDropdown");
+                        a = div.getElementsByTagName("a");
+                        for (i = 0; i < a.length; i++) {
+                            if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                a[i].style.display = "";
+                            } else {
+                                a[i].style.display = "none";
+                            }
+                        }
+                    }
+                    
+                        function toggleAddUser(event, id)
+                        {
+                            var user = document.getElementById("followUser"+id);
+                            var userButton = document.getElementById("followUserButton"+id);
+                            if (user.value == "")
+                            {
+                                user.value="follow";
+                                userButton.style="background: green";
+                            }
+                            else
+                            {
+                                user.value="";
+                                userButton.style="";
+                            }
+                        }
+                    </script>
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">Search Users</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                {% for row in usersSearch %}
+                                <a href="profile.php?id={{ row['id'] }}">{{ row['firstName'] ~  " " ~ row['lastName']}}</a>
+                                {% endfor %}
+                                </div>
+                    </div>
+                    <div id="Following" class="tabcontent">
+                        <script>
+                            function toggleCancelUser(e, id)
+                            {
+                                var user = document.getElementById("usersYouAreFollowing"+id);
+                                var userLI = document.getElementById("usersYouAreFollowingLI"+id);
+                                if (user.value == "cancel")
+                                {
+                                   // uncancels user from following given user
+                                   user.value="";
+                                   userLI.style="";
+                                }
+                                else
+                                {
+                                    // cancels user from following given user
+                                    user.value="cancel";
+                                    userLI.style="background: #CCC;";
+                                }
+                            }
+                        </script>
+                        <h3>You are following:</h3>
+                        <form method="post" action="/Epitaphis/removeFollowing.php">
+                            <p>
+                                <ul>
+                                    {% for row in usersYouAreFollowing %}
+                                    <li id="usersYouAreFollowingLI{{ row['id'] }}">{{ row['firstName'] ~ " " ~ row['lastName'] }}
+                                        <input type="hidden" id="usersYouAreFollowing{{ row['id'] }}" name="usersYouAreFollowing{{ row['id'] }}" value="" />
+                                        <button type="button" id="usersYouAreFollowingButton{{ row['id'] }}" onclick="toggleCancelUser(event, {{ row['id'] }})">Cancel</button>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </p>
+                            <div class="submit-button"><input class="btn btn-primary btn-block" type="submit" value="Submit" /></div>
+                        </form>
+                    </div>
+                    <div id="Followers" class="tabcontent">
+                        <script>
+                            function toggleRemoveFollower(e, id)
+                            {
+                                var user = document.getElementById("usersFollowingYou"+id);
+                                var userLI = document.getElementById("usersFollowingYouLI"+id);
+                                if (user.value == "remove")
+                                {
+                                    // unremoves user from following given user
+                                    user.value="";
+                                    userLI.style="";
+                                }
+                                else
+                                {
+                                    // removes user from following given user
+                                    user.value="remove";
+                                    userLI.style="background: #CCC;";
+                                }
+                            }
+                        </script>
+                        <h3>Who is following you:</h3>
+                        <form method="post" action="/Epitaphis/removeFollowers.php">
+                            <p>
+                            <ul>
+                                {% for row in usersFollowingYou %}
+                                <li id="usersFollowingYouLI{{ row['id'] }}">{{ row['firstName'] ~ " " ~ row['lastName'] }}
+                                    <input type="hidden" id="usersFollowingYou{{ row['id'] }}" name="usersFollowingYou{{ row['id'] }}" value="" />
+                                    <button type="button" id="usersFollowingYouButton{{ row['id'] }}" onclick="toggleRemoveFollower(event, {{ row['id'] }})">Remove</button>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            </p>
+                            <div class="submit-button"><input class="btn btn-primary btn-block" type="submit" value="Submit" /></div>
+                        </form>
+                    </div>
+                    <div id="Requests" class="tabcontent">
+                        <script>
+                            function acceptFollower(e, id)
+                            {
+                                var user = document.getElementById("usersRequestingToFollowYou"+id);
+                                var userLI = document.getElementById("usersRequestingToFollowYouLI"+id);
+                                if (user.value != "accept")
+                                {
+                                    // rejects user from following
+                                    user.value="accept";
+                                    userLI.style="background: green;";
+                                }
+                            }
+                            function rejectFollower(e, id)
+                            {
+                                var user = document.getElementById("usersRequestingToFollowYou"+id);
+                                var userLI = document.getElementById("usersRequestingToFollowYouLI"+id);
+                                if (user.value != "reject")
+                                {
+                                    // unremoves user from following given user
+                                    user.value="reject";
+                                    userLI.style="background: #CCC;";
+                                }
+                            }
+                        </script>
+                        <h3>Who is requesting to follow you:</h3>
+                        <form method="post" action="/Epitaphis/followerRequests.php">
+                            <p>
+                            <ul>
+                                {% for row in usersRequestingToFollowYou %}
+                                <li id="usersRequestingToFollowYouLI{{ row['id'] }}">{{ row['firstName'] ~ " " ~ row['lastName'] }}
+                                    <input type="hidden" id="usersRequestingToFollowYou{{ row['id'] }}" name="usersRequestingToFollowYou{{ row['id'] }}" value="" />
+                                    <button type="button" id="usersRequestingToFollowYouAccept{{ row['id'] }}" onclick="acceptFollower(event, {{ row['id'] }})">Accept</button>
+                                    <button type="button" id="usersRequestingToFollowYouReject{{ row['id'] }}" onclick="rejectFollower(event, {{ row['id'] }})">Reject</button>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            </p>
+                            <div class="submit-button"><input class="btn btn-primary btn-block" type="submit" value="Submit" /></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
