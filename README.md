@@ -1,3 +1,3 @@
 # Epitaphis
 
-You told me you would read this Tom, so here you go. This site is going to be the best lavender-colored site of all time. There will be tombstones everywhere, and hopefully won't have any spaghetti.
+This is an old project done at HackNY 2018. It is the result of four people coming together to build the best web app they could in 24 hours. I worked primarily on the front-end.
